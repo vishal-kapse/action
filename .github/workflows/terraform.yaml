@@ -39,4 +39,4 @@ jobs:
         uses: 'google-github-actions/upload-cloud-storage@v0'
         with:
           path: ./scan-${{ steps.date.outputs.date }}.sarif
-          destination: bucket-name/scan-${{ steps.date.outputs.date }}.sarif
+          destination: bucket-name/checkov-scan
