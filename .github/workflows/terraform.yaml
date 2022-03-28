@@ -1,8 +1,8 @@
 name: 'terraform'
 on:
- pull_request:
+ push:
    branches:
-     - main
+     - branch
 jobs:
   terraform:
     name: "Terraform Plan"
