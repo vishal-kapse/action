@@ -24,8 +24,8 @@ jobs:
         with:
           directory: /home/runner/work/action/action/terraform
           framework: terraform # optional: run only on a specific infrastructure {cloudformation,terraform,kubernetes,all}
-          quiet: true # optional: display only failed checks
-          soft_fail: false # optional: do not return an error code if there are failed checks
+          quiet: false # optional: display only failed checks
+          soft_fail: true # optional: do not return an error code if there are failed checks
           output_format: json
       - name: dir
         run: |
