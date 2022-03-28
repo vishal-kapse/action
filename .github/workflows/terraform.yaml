@@ -22,7 +22,7 @@ jobs:
         id: checkov
         uses: bridgecrewio/checkov-action@master
         with:
-          directory:
+          directory: /home/runner/work/action/action/terraform
           framework: terraform # optional: run only on a specific infrastructure {cloudformation,terraform,kubernetes,all}
           quiet: true # optional: display only failed checks
           soft_fail: true # optional: do not return an error code if there are failed checks
