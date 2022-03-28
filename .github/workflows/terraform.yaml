@@ -30,3 +30,13 @@ jobs:
         run: |
           ls
           ls -lrt
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      - name: rename
+        run: mv results.sarif scan-${{ steps.date.outputs.date }}.sarif
+      - id: 'upload-file'
+        uses: 'google-github-actions/upload-cloud-storage@v0'
+        with:
+          path: ./scan-${{ steps.date.outputs.date }}.sarif
+          destination: bucket-name/scan-${{ steps.date.outputs.date }}.sarif
