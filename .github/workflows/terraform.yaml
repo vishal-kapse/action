@@ -32,11 +32,9 @@ jobs:
           ls -lrt
       - name: Get current date
         id: date
-        run: |
-          echo "::set-output name=date::$(date +'%Y-%m-%d')"
-          echo "::set-output name=time::$(time +'%h-%m-%s')"
+        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
       - name: rename
-        run: mv results.sarif scan-${{ steps.date.outputs.date }}-${{ steps.date.outputs.time }}.sarif
+        run: mv results.sarif scan-${{ steps.date.outputs.date }}.sarif
       - id: 'upload-file'
         uses: 'google-github-actions/upload-cloud-storage@v0'
         with:
