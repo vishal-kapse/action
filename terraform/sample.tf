@@ -29,3 +29,4 @@ resource "google_storage_bucket" "static-site" {
     max_age_seconds = 3600
   }
 }
+#
