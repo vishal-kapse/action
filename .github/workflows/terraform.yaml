@@ -32,7 +32,9 @@ jobs:
           ls -lrt
       - name: Get current date
         id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+        run: |
+          echo "::set-output name=date::$(date +'%Y-%m-%d')"
+          echo "::set-output name=time::$(time +'%h-%m-%s')"
       - name: rename
         run: mv results.sarif scan-${{ steps.date.outputs.date }}.sarif
       - id: 'upload-file'
