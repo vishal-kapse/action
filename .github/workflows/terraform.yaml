@@ -14,11 +14,15 @@ jobs:
         with:
           python-version: '3.8'
           architecture: 'x64'
+      - name: dir
+        run: |
+          ls
+          pwd
       - name: Run Checkov scan
         id: checkov
         uses: bridgecrewio/checkov-action@master
         with:
-          directory: DIR_OF_IAC_CODE
+          directory:
           framework: terraform # optional: run only on a specific infrastructure {cloudformation,terraform,kubernetes,all}
           quiet: true # optional: display only failed checks
           soft_fail: true # optional: do not return an error code if there are failed checks
