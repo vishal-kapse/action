@@ -26,7 +26,7 @@ jobs:
           framework: terraform # optional: run only on a specific infrastructure {cloudformation,terraform,kubernetes,all}
           quiet: false # optional: display only failed checks
           soft_fail: true # optional: do not return an error code if there are failed checks
-          output_format: cli
+          output_format: sarif
       - name: dir
         run: |
           ls
