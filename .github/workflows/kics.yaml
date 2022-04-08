@@ -14,21 +14,19 @@ jobs:
         # make sure results dir is created
         run: mkdir -p results-dir
       - run: ls
-      - name: Run KICS Scan with SARIF result
-        uses: checkmarx/kics-action@docker-runner
+      - name: KICS Github Action
+        uses: Checkmarx/kics-github-action@v1.0
         with:
+          # path to file or directory to scan
           path: 'terraform'
-          # when provided with a directory on output_path
-          # it will generate the specified reports file named 'results.{extension}'
-          # in this example it will generate:
-          # - results-dir/results.json
-          # - results-dir/results.sarif
-          output_path: results-dir
-          platform_type: terraform
-          output_formats: 'json,sarif'
-          exclude_paths: "terraform/gcp/big_data.tf,terraform/azure"
-          # look for the queries' ID in its metadata.json
-          exclude_queries: 0437633b-daa6-4bbc-8526-c0d2443b946e
+          # file path to store result in json format
+          output_path: results-dir # optional
+          # file path to store source internal representation in JSON format
+          payload_path: payload # optional
+          # path to directory with queries (default "./assets/queries")
+          # queries: # optional
+          # verbose scan
+          # erbose: # optional
       - name: Show results
         run: |
           cat results-dir/results.sarif
