@@ -13,7 +13,7 @@ jobs:
       - name: Mkdir results-dir
         # make sure results dir is created
         run: mkdir -p results-dir
-        run: ls
+      - run: ls
       - name: Run KICS Scan with SARIF result
         uses: checkmarx/kics-action@docker-runner
         with:
