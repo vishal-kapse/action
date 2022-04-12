@@ -29,3 +29,12 @@ resource "google_storage_bucket" "static-site" {
     max_age_seconds = 3600
   }
 }
+
+resource "google_project_iam_binding" "sample_iam_binding" {
+  project = "devops-sandbox-20200519"
+  role    = "roles/viewer"
+
+  members = [
+    "user:vishal.kapse@cldcvr.com"
+  ]
+}

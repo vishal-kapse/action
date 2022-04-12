@@ -5,29 +5,19 @@ steps:
       - -c
       - |
         ls
-        mkdir /code
-        mkdir /policy
-        git -C /code clone https://github.com/vishal-kapse/action.git
-        git -C /policy clone https://github.com/GoogleCloudPlatform/policy-library.git
+        cd /workspace
+        mkdir code
+        mkdir policy
+        git -C /workspace/code clone https://github.com/vishal-kapse/action.git
+        git -C /workspace/policy clone https://github.com/GoogleCloudPlatform/policy-library.git
 
-  - name: 'gcr.io/community-cloud-builders/terraform'
-    entrypoint: 'bash'
-    args:
-      - -c
-      - |
-        ls
-        terraform chdir=/code/terraform plan -out=test.tfplan
-        terraform show -json ./test.tfplan > ./tf.json
   - name: 'gcr.io/cloud-builders/gcloud-slim'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
-        ls
         gcloud -q components update
         gcloud -q components install \
             alpha beta \
             terraform-tools
-        ls
-        
-        gcloud beta terraform vet ./tf.json --policy-library=/policy/policy-library
+        gcloud beta terraform vet /workspace/code/action/terraform/tf.json --policy-library=/workspace/policy/policy-library
