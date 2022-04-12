@@ -10,6 +10,9 @@ steps:
         mkdir policy
         git -C /workspace/code clone https://github.com/vishal-kapse/action.git
         git -C /workspace/policy clone https://github.com/GoogleCloudPlatform/policy-library.git
+        cd /workspace/policy
+        cd policy-library/policies
+        ls
 
   - name: 'gcr.io/cloud-builders/gcloud-slim'
     entrypoint: 'bash'
@@ -20,4 +23,4 @@ steps:
         gcloud -q components install \
             alpha beta \
             terraform-tools
-        gcloud beta terraform vet /workspace/code/action/terraform/tf.json --policy-library=/workspace/policy/policy-library
+        gcloud beta terraform vet /workspace/code/action/terraform/tftest.json --policy-library=/workspace/policy/policy-library
