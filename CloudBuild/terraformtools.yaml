@@ -1,0 +1,21 @@
+steps:
+  - name: 'gcr.io/cloud-builders/git'
+    entrypoint: 'bash'
+    args:
+      - -c
+      - |
+        ls
+        git clone https://github.com/vishal-kapse/action.git
+
+  - name: 'gcr.io/cloud-builders/gcloud-slim'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        ls
+        gcloud -q components update
+        gcloud -q components install \
+            alpha beta \
+            terraform-tools
+        ls
+        gcloud beta terraform vet --policy-library=
