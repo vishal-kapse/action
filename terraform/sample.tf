@@ -35,6 +35,6 @@ resource "google_project_iam_binding" "sample_iam_binding" {
   role    = "roles/viewer"
 
   members = [
-    "user:vishal.kapse@cldcvr.com"
+    "user:vishal.kapse@abc.com"
   ]
 }
