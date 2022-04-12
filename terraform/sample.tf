@@ -16,7 +16,7 @@ resource "google_storage_bucket" "static-site" {
   location      = "EU"
   force_destroy = true
 
-  uniform_bucket_level_access = true
+  uniform_bucket_level_access = false
 
   website {
     main_page_suffix = "index.html"
